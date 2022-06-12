@@ -3,23 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
   <title>Interactive comments section</title>
-
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-  <!-- Pull dynamic content from the data.json file -->
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Aditi Kulkarni</a>.
-  </div>
+<main id="root">
+    <div class="comments"></div>
+    <form class="comment-input-area">
+      <img src="./images/avatars/image-juliusomo.png" alt="user_avatar" class="user_avatar" id="default_user_avatar"/>
+      <textarea placeholder="Add a comment..." required></textarea>
+      <input type="submit" value="SEND" class="submit-btn low-opacity-hover bold-txt" />
+    </form>
+</main>
+<script src="index.js" type="module"></script>
 </body>
 </html>

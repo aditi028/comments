@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap');
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Rubik', sans-serif;
+}
+
+:root{
+  --purple: hsl(238,40%,52%);
+  --purple-light: hsl(239, 57%, 85%);
+  --purple-bg: hsl(0, 0%, 100%);
+
+  --secondary-bg: hsl(223, 19%, 93%);
+  --secondary-clr: hsl(211, 10%, 45%);
+
+  --red: hsl(358,79%,66%);
+  --dark-clr:hsl(212,24%,26%);
+  --border-clr: hsl(223,19%,93%);
+}
+
+/* global styles */
+.bold-txt {
+  font-weight: 700;
+}
+.blue-clr-txt {
+  color: var(--purple);
+}
+.red-clr-txt {
+  color: var(--red);
+}
+.user_avatar{
+  max-width: 3em;
+}
+.comment-input-area .user_avatar{
+  max-width: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: 80%;
+}
+
+body{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background: var(--secondary-bg);
+  padding: 1em;
+  line-height: 1.4;
+}
+
+#root{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  width: min(45em,94%);
+  color: var(--secondary-clr);
+}
+
+/* comment box design */
+.comments{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.comment-box{
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5em;
+  padding: 2em 1.5em;
+  align-items: start;
+  background: var(--purple-bg);
+  border-radius: 0.3rem;
+}
+
+
+/* comment */
+.comment-text{
+  text-overflow: ellipsis; /* '...' feature */
+  overflow: hidden; /* required */
+}
+
+.comment-header{
+  display: flex;
+  flex-direction: row;
+  column-gap: 1em;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.user-info{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 1em;
+  white-space: nowrap;
+}
+.user-avatar{
+  max-width: 3em;
+} 
+.userName{
+  color: var(--dark-clr);
+}
+.currentuser .userName:after{
+  content: "you";
+  margin-inline: 0.5em;
+  padding: 0.3em 0.5em;
+  background: var(--purple);
+  color: white;
+  font-size: 0.75rem;
+  border-radius: 0.2rem;
+}
+
+/* button actions area */
+.action-area{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 1em;
+  white-space: nowrap;
+}
+[data-action]{
+  cursor: pointer;
+}
+.reply-btn::before {
+  content: url("./images/icon-reply.svg");
+}
+.delete-btn::before {
+  content: url("./images/icon-delete.svg");
+}
+.edit-btn::before {
+  content: url("./images/icon-edit.svg");
+}
+[data-action]::before{
+  margin-inline-end: 0.5em;
+  vertical-align: middle;
+}
+
+/* comment area */
+.comment-input-area {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  align-items: start;
+  width: 100%;
+  background: var(--purple-bg);
+  padding: 1em;
+  gap: 1em;
+  border-radius: 0.3rem;
+}
+.comment-input-area > textarea {
+  grid-column: span 6;
+}
+.comment-input-area > .user_avatar {
+  grid-row-start: auto;
+}
+.submit-btn{
+  padding: 1em 1.7em;
+  background: var(--purple);
+  color: white;
+  border: none;
+  border-radius: 0.4em;
+}
+textarea{
+  resize: none;
+  min-height: 5rem;
+  outline: 0.125em solid var(--border-clr);
+  padding: 1em 1em;
+  border: 0.125em solid var(--border-clr);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+textarea:focus{
+  border-color: var(--dark-clr);
+}
+.low-opacity-hover:hover{
+  opacity: 0.7;
+}
+
+
+/* replies */
+.replies-wrapper-comp{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  row-gap: 1em;
+  align-content: start;
+  position: relative;
+  margin-top: 0.2em;
+
+}
+.verticalLine {
+  border-left: 0.15em solid var(--purple-light);
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 0.2em;
+  left: 1.5em;
+}
+
+.replies-wrapper{
+  position: relative;
+  width: 100%;
+}
+.replies-wrapper{
+  margin-left: 3.0em;
+}
+.reply, .replies-wrapper> .reply-input-area{
+  width: 90%;
+  margin-inline-start: auto;
+}
+
+.reply:first-child::before{
+  content: "";
+  position: absolute;
+  width: 0.15em;
+  height: 100%;
+  background-color: var(--purple-light);
+  inset: 0 auto 0 0;
+  border-radius: 0.2em;
+  left: 2.5em;
+}
+.reply-input-area{
+  margin-top: 0.5em;
+  animation: add-in 0.25s ease-in forwards;
+  transform: translateX(-30%);
+  opacity: 0;
+}
+@keyframes add-in{
+  to{
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+
+
+/* remove CSS */
+.remove{
+  animation: remove-away 0.25s ease-in;
+}
+@keyframes remove-away{
+  to{
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+}
